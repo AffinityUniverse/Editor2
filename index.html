@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="kor">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transform</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Transform">
+    <meta property="og:description" content="3D transform을 이용한 애니메이션">
+
+    <style>
+        body {
+            margin: 30px auto 0px auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        section {
+            width: 500px;
+            height: 500px;
+            background-position: center;
+            background-size: cover;
+            border-radius: 15%;
+            margin-top: 100px;
+            margin-bottom: 100px;
+            perspective: 1500px;
+        }
+
+        .group {
+            clear: left;
+            transition: transform 1.0s;
+        }
+
+        .group>section>div {
+            width: 500px;
+            height: 500px;
+            border-radius: 15%;
+            transition: 0.5s;
+        }
+
+        .flip1 {
+            transform-origin: top;
+            background-image: url(number1.png);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .flip2 {
+            transform-origin: bottom;
+            background-image: url(number2.png);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .flip3 {
+            transform-origin: left;
+            background-image: url(number3.png);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .flip4 {
+            transform-origin: top;
+            background-image: url(number4.png);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .flip5 {
+            transform-origin: left;
+            background-image: url(number5.png);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .flip6 {
+            transform-origin: top;
+            background-image: url(number6.png);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .flip7 {
+            transform-origin: bottom;
+            background-image: url(number7.png);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .flipX:hover {
+            transform: rotateX(180deg);
+        }
+
+        .flipY:hover {
+            transform: rotateY(180deg);
+        }
+
+        .flipZ:hover {
+            transform: rotateZ(180deg);
+        }
+
+        .group:hover {
+            transform: scale(1.5);
+        }
+
+        .navbar {
+            position: fixed;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            width: 100px;
+            padding: 10px 0;
+            text-align: center;
+            font-size: 50px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;;
+        }
+
+        .navbar a {
+            width: 70px;
+            height: 70px;
+            border-radius: 15%;
+            color: white;
+            text-decoration: none;
+            margin: 10px 0;
+            background-position: center;
+            background-size: cover;
+            cursor: pointer;
+        }
+
+        .navbar a:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+
+<body style="background-color: #0846B0;">
+
+    <div class="navbar">
+        <a href="#section1" style="background-image: url(number1.png);"></a>
+        <a href="#section2" style="background-image: url(number2.png);"></a>
+        <a href="#section3" style="background-image: url(number3.png);"></a>
+        <a href="#section4" style="background-image: url(number4.png);"></a>
+        <a href="#section5" style="background-image: url(number5.png);"></a>
+        <a href="#section6" style="background-image: url(number6.png);"></a>
+        <a href="#section7" style="background-image: url(number7.png);"></a>
+    </div>
+
+    <div class="group" id="section1" style="margin-top: 2000px;">
+        <section style="background-image: url(question1.png);">
+            <div class="flipX flip1"></div>
+        </section>
+    </div>
+
+    <div class="group" id="section2">
+        <section style="background-image: url(question2.png);">
+            <div class="flipX flip2"></div>
+        </section>
+    </div>
+
+    <div class="group" id="section3">
+        <section style="background-image: url(question3.png);">
+            <div class="flipY flip3"></div>
+        </section>
+    </div>
+
+    <div class="group" id="section4">
+        <section style="background-image: url(question4.png);">
+            <div class="flipZ flip4"></div>
+        </section>
+    </div>
+
+    <div class="group" id="section5">
+        <section style="background-image: url(question5.png);">
+            <div class="flipZ flip5"></div>
+        </section>
+    </div>
+
+    <div class="group" id="section6">
+        <section style="background-image: url(question6.png);">
+            <div class="flipX flip6"></div>
+        </section>
+    </div>
+
+    <div class="group" id="section7" style="margin-bottom: 100px;">
+        <section style="background-image: url(question7.png);">
+            <div class="flipX flip7"></div>
+        </section>
+    </div>
+
+    <script>
+        // Smooth scrolling when clicking on the navbar links
+        document.querySelectorAll('.navbar a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetSection = document.querySelector(this.getAttribute('href'));
+
+                // Scroll smoothly to the target section
+                targetSection.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
