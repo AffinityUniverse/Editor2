@@ -88,26 +88,24 @@
             background-size: cover;
         }
 
-        .flipX:hover {
+        .group.open .flipX {
             transform: rotateX(180deg);
         }
-
-        .flipY:hover {
+        .group.open .flipY {
             transform: rotateY(180deg);
         }
-
-        .flipZ:hover {
+        .group.open .flipZ {
             transform: rotateZ(180deg);
         }
 
-        .group:hover {
+        .group.open {
             transform: scale(1.5);
         }
 
         .navbar {
             position: fixed;
             top: 50%;
-            right: 60px;
+            right: 30px;
             transform: translateY(-50%);
             width: 100px;
             padding: 10px 0;
@@ -116,7 +114,8 @@
             z-index: 1000;
             display: flex;
             flex-direction: column;
-            align-items: center;;
+            align-items: center;
+            ;
         }
 
         .navbar a {
@@ -203,9 +202,58 @@
                 targetSection.scrollIntoView({
                     behavior: 'smooth'
                 });
+
+                // Close any open card groups
+                document.querySelectorAll('.group.open').forEach(group => {
+                    group.classList.remove('open');
+                });
+            });
+        });
+
+        // Add click event listeners to flipX elements
+        document.querySelectorAll('.flipX').forEach(flipX => {
+            flipX.addEventListener('click', function () {
+                const group = this.closest('.group');
+                // Close other open card groups
+                document.querySelectorAll('.group.open').forEach(openGroup => {
+                    if (openGroup !== group) {
+                        openGroup.classList.remove('open');
+                    }
+                });
+                // Toggle the 'open' class on the clicked group element
+                group.classList.toggle('open');
+            });
+        });
+
+        document.querySelectorAll('.flipY').forEach(flipY => {
+            flipY.addEventListener('click', function () {
+                const group = this.closest('.group');
+                // Close other open card groups
+                document.querySelectorAll('.group.open').forEach(openGroup => {
+                    if (openGroup !== group) {
+                        openGroup.classList.remove('open');
+                    }
+                });
+                // Toggle the 'open' class on the clicked group element
+                group.classList.toggle('open');
+            });
+        });
+
+        document.querySelectorAll('.flipZ').forEach(flipZ => {
+            flipZ.addEventListener('click', function () {
+                const group = this.closest('.group');
+                // Close other open card groups
+                document.querySelectorAll('.group.open').forEach(openGroup => {
+                    if (openGroup !== group) {
+                        openGroup.classList.remove('open');
+                    }
+                });
+                // Toggle the 'open' class on the clicked group element
+                group.classList.toggle('open');
             });
         });
     </script>
+
 </body>
 
 </html>
