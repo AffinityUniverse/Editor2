@@ -44,61 +44,70 @@
             transition: 0.5s;
         }
 
+        .flip {
+            background-position: center;
+            background-size: cover;
+        }
+
         .flip1 {
             transform-origin: top;
             background-image: url(number1.png);
-            background-position: center;
-            background-size: cover;
         }
 
         .flip2 {
             transform-origin: bottom;
             background-image: url(number2.png);
-            background-position: center;
-            background-size: cover;
         }
 
         .flip3 {
             transform-origin: left;
             background-image: url(number3.png);
-            background-position: center;
-            background-size: cover;
         }
 
         .flip4 {
             transform-origin: top;
             background-image: url(number4.png);
-            background-position: center;
-            background-size: cover;
         }
 
         .flip5 {
             transform-origin: left;
             background-image: url(number5.png);
-            background-position: center;
-            background-size: cover;
         }
 
         .flip6 {
             transform-origin: top;
             background-image: url(number6.png);
-            background-position: center;
-            background-size: cover;
         }
 
         .flip7 {
             transform-origin: bottom;
             background-image: url(number7.png);
-            background-position: center;
-            background-size: cover;
         }
+
+        .flip8 {
+            transform-origin: left;
+            background-image: url(number8.png);
+        }
+
+        .flip9 {
+            transform-origin: top;
+            background-image: url(number9.png);
+        }
+
+        .flip10 {
+            transform-origin: left;
+            background-image: url(number10.png);
+        }
+        
 
         .group.open .flipX {
             transform: rotateX(180deg);
         }
+
         .group.open .flipY {
             transform: rotateY(180deg);
         }
+
         .group.open .flipZ {
             transform: rotateZ(180deg);
         }
@@ -124,8 +133,8 @@
         }
 
         .navbar a {
-            width: 70px;
-            height: 70px;
+            width: 50px;
+            height: 50px;
             border-radius: 15%;
             color: white;
             text-decoration: none;
@@ -151,47 +160,68 @@
         <a href="#section5" style="background-image: url(number5.png);"></a>
         <a href="#section6" style="background-image: url(number6.png);"></a>
         <a href="#section7" style="background-image: url(number7.png);"></a>
+        <a href="#section8" style="background-image: url(number8.png);"></a>
+        <a href="#section9" style="background-image: url(number9.png);"></a>
+        <a href="#section10" style="background-image: url(number10.png);"></a>
     </div>
 
     <div class="group" id="section1">
         <section style="background-image: url(question1.png);">
-            <div class="flipX flip1"></div>
+            <div class="flip flipX flip1"></div>
         </section>
     </div>
 
     <div class="group" id="section2">
         <section style="background-image: url(question2.png);">
-            <div class="flipX flip2"></div>
+            <div class="flip flipX flip2"></div>
         </section>
     </div>
 
     <div class="group" id="section3">
         <section style="background-image: url(question3.png);">
-            <div class="flipY flip3"></div>
+            <div class="flip flipY flip3"></div>
         </section>
     </div>
 
     <div class="group" id="section4">
         <section style="background-image: url(question4.png);">
-            <div class="flipZ flip4"></div>
+            <div class="flip flipZ flip4"></div>
         </section>
     </div>
 
     <div class="group" id="section5">
         <section style="background-image: url(question5.png);">
-            <div class="flipZ flip5"></div>
+            <div class="flip flipZ flip5"></div>
         </section>
     </div>
 
     <div class="group" id="section6">
         <section style="background-image: url(question6.png);">
-            <div class="flipX flip6"></div>
+            <div class="flip flipX flip6"></div>
         </section>
     </div>
 
     <div class="group" id="section7" style="margin-bottom: 100px;">
         <section style="background-image: url(question7.png);">
-            <div class="flipX flip7"></div>
+            <div class="flip flipX flip7"></div>
+        </section>
+    </div>
+
+    <div class="group" id="section8">
+        <section style="background-image: url(question8.png);">
+            <div class="flip flipY flip8"></div>
+        </section>
+    </div>
+
+    <div class="group" id="section9">
+        <section style="background-image: url(question9.png);">
+            <div class="flip flipZ flip9"></div>
+        </section>
+    </div>
+
+    <div class="group" id="section10">
+        <section style="background-image: url(question10.png);">
+            <div class="flip flipZ flip10"></div>
         </section>
     </div>
 
@@ -233,13 +263,11 @@
         document.querySelectorAll('.flipY').forEach(flipY => {
             flipY.addEventListener('click', function () {
                 const group = this.closest('.group');
-                // Close other open card groups
                 document.querySelectorAll('.group.open').forEach(openGroup => {
                     if (openGroup !== group) {
                         openGroup.classList.remove('open');
                     }
                 });
-                // Toggle the 'open' class on the clicked group element
                 group.classList.toggle('open');
             });
         });
@@ -247,13 +275,11 @@
         document.querySelectorAll('.flipZ').forEach(flipZ => {
             flipZ.addEventListener('click', function () {
                 const group = this.closest('.group');
-                // Close other open card groups
                 document.querySelectorAll('.group.open').forEach(openGroup => {
                     if (openGroup !== group) {
                         openGroup.classList.remove('open');
                     }
                 });
-                // Toggle the 'open' class on the clicked group element
                 group.classList.toggle('open');
             });
         });
